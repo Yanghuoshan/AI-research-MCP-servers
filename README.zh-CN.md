@@ -27,6 +27,7 @@
 
 | 我想...                    | 前往                                                     |
 | -------------------------- | -------------------------------------------------------- |
+| 让 Agent 帮我挑 MCP         | **[给 AI Agent 的快速开始](#-给-ai-agent-的快速开始)**     |
 | 浏览全部推荐 MCP           | **[CATALOG.md](./CATALOG.md)**（完整表格 + 目录）         |
 | 看详细介绍                 | **[servers/](./servers/)**（每个分类一个文件）            |
 | 提交新的 MCP               | **[CONTRIBUTING.md](./CONTRIBUTING.md)**                 |
@@ -95,6 +96,61 @@
                            ▼
                       评测 / 报告
 ```
+
+---
+
+## 🤖 给 AI Agent 的快速开始
+
+不想自己挑？把这份清单直接交给 Agent：它会读完整个目录、问清你的工作流，然后返回一份可直接粘贴的配置。
+
+### 1. 把下面这段提示词粘给 Agent
+
+适用于任何能抓取 URL 的 Agent（Claude、Cursor、ChatGPT、Copilot 等）：
+
+```text
+请用这份 MCP 精选清单帮我搭建 AI 科研用的 MCP 工具链：
+
+- 索引（人类可读表格）：https://raw.githubusercontent.com/Yanghuoshan/AI-research-MCP-servers/main/CATALOG.md
+- 结构化数据（唯一数据源）：https://raw.githubusercontent.com/Yanghuoshan/AI-research-MCP-servers/main/data/servers.yaml
+- 权限与风险规则：https://raw.githubusercontent.com/Yanghuoshan/AI-research-MCP-servers/main/SECURITY.md
+
+步骤：
+1. 抓取这三个文件。以 servers.yaml 为准，CATALOG.md 作为上下文。
+2. 最多问我的工作流 3 个问题（角色、现有技术栈、第一个任务）。
+   如果我回答"你决定"，请直接写出你的假设并继续。
+3. 推荐 3-6 个 server。每个给出：一句话理由、等级（🏆/⭐/🧪/🛠️/⚠️）、
+   风险档位（read / write / exec / billing）。
+4. 输出一份可直接粘贴的 MCP 客户端 JSON 配置。每个 server 必须使用其官方文档里
+   的确切 URL 或包名，并附上该文档链接；无法核实的一行请标注 UNVERIFIED，不要猜。
+5. 对每个具备 write / exec / billing 权限的 server，给出最小安全授权方案：
+   只读角色、独立账号、容器隔离或消费上限。
+
+规则：
+- 只选够用的最小集合，优先 🏆 Recommended。不要一次装完 27 个。
+- 配置里不要写死凭证，用环境变量或客户端的密钥管理。
+- 如果某个 server 需要我没有的 API Key，直接说明，不要编造。
+- 两个 server 拿不定主意时，选官方那个，并说明取舍。
+
+先问我问题（或写出你的假设），然后等我回复。
+```
+
+### 2. 或者指向本地仓库
+
+如果 Agent 已经能读到本仓库，把上面三个 URL 换成 `./CATALOG.md`、`./data/servers.yaml`、`./SECURITY.md`。
+
+### 3. 角色预设
+
+在提示词前面加一行，可以跳过提问环节：
+
+| 加这一行...                            | Agent 会优先组合                                    |
+| -------------------------------------- | --------------------------------------------------- |
+| `我做文献调研，并复现论文。`            | arXiv + Semantic Scholar + HF + Jupyter/Colab + GitHub |
+| `我训练深度学习模型并跟踪实验。`        | HF + Jupyter/Colab + W&B（+ MLflow）                |
+| `我研究 LLM 与 Agent，需要做评测。`     | HF + Jupyter + LangSmith + Phoenix + Chroma         |
+| `我是要上线模型的 ML 工程师。`          | HF + MLflow + GitHub + HF Endpoints（+ Kubernetes） |
+| `我做 AI for biology/medicine。`       | PubMed + Semantic Scholar + Jupyter + HF            |
+
+> ⚠️ **应用前请先审阅。** Agent 给的配置只是提案：授予 write、代码执行或计费权限之前，先对照 [CATALOG.md](./CATALOG.md) 的 `Risk` 列与 [SECURITY.md](./SECURITY.md) 的缓解措施。
 
 ---
 
