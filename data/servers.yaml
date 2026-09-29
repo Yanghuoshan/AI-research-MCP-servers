@@ -1,0 +1,773 @@
+# =============================================================================
+# AI Research MCP Servers — structured catalog
+# -----------------------------------------------------------------------------
+# This file is the SOURCE OF TRUTH for the human-readable views:
+#   - CATALOG.md        (compact tables + master index)
+#   - servers/*.md      (detailed entries)
+#
+# Rules:
+#   * `id` is stable and lowercase-hyphenated. Never rename after merge.
+#   * `category` must match a file stem in servers/ (e.g. `literature` ->
+#     servers/literature.md).
+#   * Enum values are fixed — see `enums` below. Do not invent new values
+#     without also updating CONTRIBUTING.md.
+#   * Changing a server means updating this file AND CATALOG.md AND
+#     servers/<category>.md.
+# =============================================================================
+
+version: 1
+updated: 2026-09-29
+
+enums:
+  category: [literature, models-datasets, experiments, evaluation, deployment, infrastructure]
+  type: [official, community]
+  difficulty: [easy, medium, advanced]
+  setup: [easy, medium, advanced]
+  run: [remote, local, docker]
+  level: [recommended, worth-trying, experimental, advanced, use-with-care]
+  permissions: [read, write, exec, billing]
+
+categories:
+  - id: literature
+    title: Literature & Research
+    file: servers/literature.md
+    description: Papers, citations and research discovery.
+  - id: models-datasets
+    title: Models & Datasets
+    file: servers/models-datasets.md
+    description: Model hubs, dataset hubs and hosted model execution.
+  - id: experiments
+    title: Experiment Management
+    file: servers/experiments.md
+    description: Experiment tracking, run management and model registry.
+  - id: evaluation
+    title: Evaluation & Observability
+    file: servers/evaluation.md
+    description: LLM/agent evaluation, traces and observability.
+  - id: deployment
+    title: Inference & Deployment
+    file: servers/deployment.md
+    description: Inference endpoints, serving and deployment.
+  - id: infrastructure
+    title: Agent / Compute / DevOps
+    file: servers/infrastructure.md
+    description: Agent frameworks, notebooks/compute, code hosting and DevOps.
+
+servers:
+  - id: huggingface
+    name: Hugging Face MCP
+    emoji: "🤗"
+    category: models-datasets
+    also_in: [literature]
+    tagline: Models, datasets, papers, Spaces and documentation
+    type: official
+    difficulty: easy
+    setup: easy
+    run: remote
+    level: recommended
+    permissions: [read]
+    best_for: AI/ML resource discovery
+    useful_for:
+      - Model discovery
+      - Dataset discovery
+      - Papers
+      - Spaces
+      - AI demos
+      - Hugging Face documentation
+    limitations:
+      - Token scope must be reviewed; write-enabled tokens expand the blast radius
+    links:
+      docs: https://huggingface.co/docs/hub/agents-mcp
+      github: https://github.com/huggingface/hf-mcp-server
+    tags: [models, datasets, papers, spaces]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: arxiv
+    name: arXiv MCP
+    emoji: "📄"
+    category: literature
+    tagline: Search and retrieve research papers from arXiv
+    type: community
+    difficulty: easy
+    setup: easy
+    run: local
+    level: recommended
+    permissions: [read]
+    best_for: Literature search
+    useful_for:
+      - Paper search
+      - Paper metadata
+      - Abstracts
+      - PDF retrieval
+      - Literature review
+    limitations:
+      - Community-maintained; verify compatibility with your client
+    links:
+      github: https://github.com/Tejas242/arxiv-mcp
+    tags: [papers, preprints]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: semantic-scholar
+    name: Semantic Scholar MCP
+    emoji: "🔎"
+    category: literature
+    tagline: Search academic papers and explore citation relationships
+    type: community
+    difficulty: easy
+    setup: easy
+    run: local
+    level: recommended
+    permissions: [read]
+    best_for: Literature discovery
+    useful_for:
+      - Paper search
+      - Authors
+      - Citations
+      - Related papers
+      - Research discovery
+    limitations:
+      - Public API rate limits; an API key may be needed for higher throughput
+    links:
+      github: https://github.com/yogsoth-ai/semantic-scholar-mcp
+    tags: [papers, citations, authors]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: openalex
+    name: OpenAlex MCP
+    emoji: "🌐"
+    category: literature
+    tagline: Search and analyze the global research landscape
+    type: community
+    difficulty: easy
+    setup: easy
+    run: local
+    level: worth-trying
+    permissions: [read]
+    best_for: Large-scale literature analysis
+    useful_for:
+      - Papers
+      - Authors
+      - Institutions
+      - Citations
+      - Research trends
+      - Collaboration networks
+    limitations:
+      - Coverage and metadata quality vary by discipline
+    links:
+      github: https://github.com/oksure/openalex-research-mcp
+    tags: [papers, bibliometrics, trends]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: replicate
+    name: Replicate MCP
+    emoji: "🧠"
+    category: models-datasets
+    tagline: Search and run AI models through Replicate
+    type: official
+    difficulty: easy
+    setup: easy
+    run: remote
+    level: worth-trying
+    permissions: [read, billing]
+    best_for: Fast model experimentation
+    useful_for:
+      - Image generation
+      - Video
+      - Audio
+      - Multimodal models
+      - Model comparison
+      - Quick experiments
+    limitations:
+      - Every run is billed; unsupervised agents can accumulate cost quickly
+    links:
+      docs: https://replicate.com/docs/reference/mcp
+    tags: [inference, multimodal, hosted-models]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: wandb
+    name: Weights & Biases MCP
+    emoji: "📊"
+    category: experiments
+    tagline: Let AI agents inspect and analyze W&B experiments
+    type: official
+    difficulty: easy
+    setup: easy
+    run: local
+    level: recommended
+    permissions: [read, write]
+    best_for: Deep learning experiments
+    useful_for:
+      - Runs
+      - Metrics
+      - Experiments
+      - Traces
+      - Reports
+      - Artifacts
+      - Model registry
+    limitations:
+      - Scope the token to a project/team; org-wide access is the default risk
+    links:
+      docs: https://wandb.ai/site/mcp/
+      github: https://github.com/wandb/wandb-mcp-server
+    tags: [experiments, metrics, artifacts]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: mlflow
+    name: MLflow MCP
+    emoji: "🔬"
+    category: experiments
+    tagline: Connect AI agents to MLflow experiments, traces and model management
+    type: official
+    difficulty: medium
+    setup: medium
+    run: local
+    level: worth-trying
+    permissions: [read, write]
+    best_for: Open-source MLOps
+    useful_for:
+      - Experiments
+      - Runs
+      - Model registry
+      - Traces
+      - Evaluation
+      - Model management
+    limitations:
+      - Requires a reachable MLflow tracking server and matching auth setup
+    links:
+      docs: https://mlflow.org/docs/latest/genai/mcp/
+    tags: [experiments, mlops, registry]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: langsmith
+    name: LangSmith MCP
+    emoji: "🔭"
+    category: evaluation
+    tagline: Inspect LLM and agent traces, datasets and experiments
+    type: official
+    difficulty: easy
+    setup: easy
+    run: local
+    level: recommended
+    permissions: [read, write]
+    best_for: LLM / Agent research
+    useful_for:
+      - LLM traces
+      - Agent traces
+      - Datasets
+      - Evaluation
+      - Debugging
+      - Prompt experiments
+    limitations:
+      - Traces may contain prompts and user content; scope to one workspace
+    links:
+      github: https://github.com/langchain-ai/langsmith-mcp-server
+    tags: [llm, agents, traces, evaluation]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: weave
+    name: W&B Weave
+    emoji: "📊"
+    category: evaluation
+    tagline: Evaluate and analyze LLM and agent workflows
+    type: official
+    difficulty: easy
+    setup: easy
+    run: local
+    level: worth-trying
+    permissions: [read, write]
+    best_for: LLM observability and evaluation
+    useful_for:
+      - LLM calls
+      - Agent traces
+      - Evaluation
+      - Latency
+      - Failures
+    limitations:
+      - Overlaps with W&B MCP; pick one to avoid duplicate tool noise
+    links:
+      docs: https://wandb.ai/site/mcp/
+    tags: [llm, observability, evaluation]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: hf-inference-endpoints
+    name: HF Inference Endpoints MCP
+    emoji: "☁️"
+    category: deployment
+    tagline: Manage and deploy models to Hugging Face Inference Endpoints
+    type: official
+    difficulty: medium
+    setup: medium
+    run: remote
+    level: advanced
+    permissions: [read, write, billing]
+    best_for: Model deployment
+    useful_for:
+      - Create endpoints
+      - Deploy models
+      - Scale endpoints
+      - Logs
+      - Metrics
+      - Inference testing
+    limitations:
+      - Provisions paid GPU resources; requires a billing-aware approval flow
+    links:
+      docs: https://huggingface.co/docs/inference-endpoints/guides/mcp_server
+    tags: [deployment, inference, gpu]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: jupyter
+    name: Jupyter MCP
+    emoji: "📓"
+    category: infrastructure
+    tagline: Give your AI agent access to Jupyter notebooks and Python execution
+    type: community
+    difficulty: medium
+    setup: medium
+    run: local
+    level: recommended
+    permissions: [read, write, exec]
+    best_for: Scientific computing
+    useful_for:
+      - Python
+      - Data analysis
+      - Visualization
+      - Model experiments
+      - Notebook workflows
+    limitations:
+      - Arbitrary code execution; must be sandboxed (container, no host secrets)
+    links:
+      github: https://github.com/datalayer/jupyter-mcp-server
+    tags: [notebooks, python, compute]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: colab
+    name: Google Colab MCP
+    emoji: "☁️"
+    category: infrastructure
+    tagline: Connect AI agents to Google Colab environments
+    type: official
+    difficulty: easy
+    setup: easy
+    run: remote
+    level: worth-trying
+    permissions: [read, write, exec]
+    best_for: Cloud-based AI experiments
+    useful_for:
+      - Python
+      - GPU experiments
+      - Notebook execution
+      - ML experiments
+    limitations:
+      - Arbitrary code execution in a Google account context; use a separate account
+    links:
+      docs: https://developers.googleblog.com/announcing-the-colab-mcp-server-connect-any-ai-agent-to-google-colab/
+    tags: [notebooks, gpu, compute]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: github
+    name: GitHub MCP
+    emoji: "🐙"
+    category: infrastructure
+    tagline: Repositories, issues, pull requests and code search
+    type: official
+    difficulty: medium
+    setup: medium
+    run: remote
+    level: recommended
+    permissions: [read, write]
+    best_for: Code, issues and pull requests
+    useful_for:
+      - Repository search
+      - Code search
+      - Issues
+      - Pull requests
+      - Code review workflows
+    limitations:
+      - Can push branches and open PRs; use a fine-grained token and read-only toolsets when possible
+    links:
+      github: https://github.com/github/github-mcp-server
+    tags: [code, devops, repos]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: nemo-agent-toolkit
+    name: NVIDIA NeMo Agent Toolkit
+    emoji: "🧩"
+    category: infrastructure
+    tagline: Build and expose AI workflows using MCP
+    type: official
+    difficulty: medium
+    setup: medium
+    run: local
+    level: advanced
+    permissions: [read, write]
+    best_for: Agent research and multi-agent systems
+    useful_for:
+      - Agent workflows
+      - MCP clients
+      - MCP servers
+      - Multi-agent systems
+      - NVIDIA AI infrastructure
+    limitations:
+      - Configuration-heavy; review exposed tool schemas before publishing a server
+    links:
+      github: https://github.com/NVIDIA/NeMo-Agent-Toolkit
+    tags: [agents, multi-agent, frameworks]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  # ---------------------------------------------------------------------------
+  # Batch 2 — web/literature discovery, evaluation, and the compute/DevOps layer
+  # ---------------------------------------------------------------------------
+
+  - id: exa
+    name: Exa MCP
+    emoji: "🔍"
+    category: literature
+    tagline: Semantic web and research-paper search
+    type: official
+    difficulty: easy
+    setup: easy
+    run: remote
+    level: recommended
+    permissions: [read]
+    best_for: Discovery beyond arXiv (web + papers)
+    useful_for:
+      - Semantic web search
+      - Research paper search
+      - Similar-paper lookup
+      - Company/topic research
+      - Crawling a result page
+    limitations:
+      - Requires an API key and is metered
+      - Ranking is produced by a proprietary model, not citation counts
+    links:
+      docs: https://exa.ai/docs/get-started/exa-mcp
+      github: https://github.com/exa-labs/exa-mcp-server
+    tags: [search, papers, web]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: firecrawl
+    name: Firecrawl MCP
+    emoji: "🔥"
+    category: literature
+    tagline: Search, scrape and crawl the web into clean markdown
+    type: official
+    difficulty: easy
+    setup: easy
+    run: remote
+    level: recommended
+    permissions: [read, billing]
+    best_for: Turning any web page into LLM-ready content
+    useful_for:
+      - Web search
+      - Page scraping
+      - Site crawling
+      - Structured extraction
+      - Documentation ingestion
+    limitations:
+      - Usage-based billing on the hosted API; budget accordingly
+      - Respect robots.txt and site terms of use
+    links:
+      github: https://github.com/firecrawl/firecrawl-mcp-server
+      docs: https://docs.firecrawl.dev/mcp-server
+    tags: [scraping, crawling, web]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: pubmed
+    name: PubMed MCP
+    emoji: "🧬"
+    category: literature
+    tagline: Search and retrieve biomedical literature from PubMed
+    type: community
+    difficulty: easy
+    setup: easy
+    run: local
+    level: worth-trying
+    permissions: [read]
+    best_for: Biomedical and life-science AI research
+    useful_for:
+      - Article search
+      - Abstracts
+      - MeSH terms
+      - Citation metadata
+    limitations:
+      - Several competing community implementations exist and none is canonical — evaluate before relying on it
+    links:
+      github: https://github.com/JackKuo666/PubMed-MCP-Server
+    tags: [papers, biomedical]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: phoenix
+    name: Arize Phoenix MCP
+    emoji: "🔮"
+    category: evaluation
+    tagline: Open-source LLM observability, traces and evaluations
+    type: official
+    difficulty: medium
+    setup: medium
+    run: local
+    level: worth-trying
+    permissions: [read, write]
+    best_for: Self-hosted LLM / RAG evaluation
+    useful_for:
+      - Traces
+      - Datasets
+      - Experiments
+      - RAG evaluation
+      - Prompt experiments
+    limitations:
+      - Requires a running Phoenix server
+      - Running evals consumes model calls
+    links:
+      github: https://github.com/Arize-ai/phoenix
+    tags: [llm, traces, rag, evaluation]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: kubernetes
+    name: Kubernetes MCP
+    emoji: "☸️"
+    category: deployment
+    tagline: Inspect and operate a Kubernetes cluster (jobs, pods, deployments)
+    type: community
+    difficulty: advanced
+    setup: advanced
+    run: local
+    level: use-with-care
+    permissions: [read, write, exec]
+    best_for: Submitting training and serving jobs to a GPU cluster
+    useful_for:
+      - Pod and job inspection
+      - Job submission
+      - Logs
+      - Resource inspection
+      - Deployment rollout
+    limitations:
+      - Cluster-level blast radius; use a scoped service account and a dev namespace
+    links:
+      github: https://github.com/Flux159/mcp-server-kubernetes
+    tags: [kubernetes, gpu-cluster, jobs]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: filesystem
+    name: Filesystem MCP
+    emoji: "📁"
+    category: infrastructure
+    tagline: Read, write and search files inside an allow-listed directory
+    type: official
+    difficulty: easy
+    setup: easy
+    run: local
+    level: recommended
+    permissions: [read, write]
+    best_for: Giving the agent a working directory for a project
+    useful_for:
+      - Reading notes and drafts
+      - Writing result files
+      - Directory search
+      - File diffing
+    limitations:
+      - Only grant the project directory; never the home directory
+      - Write tools are enabled by default in the reference implementation
+    links:
+      github: https://github.com/modelcontextprotocol/servers
+    tags: [files, reference]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: git
+    name: Git MCP
+    emoji: "🌿"
+    category: infrastructure
+    tagline: Read, search and manipulate a local Git repository
+    type: official
+    difficulty: easy
+    setup: easy
+    run: local
+    level: recommended
+    permissions: [read, write]
+    best_for: Versioning the actual research repo
+    useful_for:
+      - Repo status and diff
+      - Commit history search
+      - Branch inspection
+      - Creating commits
+    limitations:
+      - Can create commits; keep a clean tree so the agent's changes stay reviewable
+    links:
+      github: https://github.com/modelcontextprotocol/servers
+    tags: [git, version-control, reference]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: sqlite
+    name: SQLite MCP
+    emoji: "🗄️"
+    category: infrastructure
+    tagline: Query a local SQLite database with SQL
+    type: official
+    difficulty: easy
+    setup: easy
+    run: local
+    level: recommended
+    permissions: [read, write]
+    best_for: Storing and re-querying experiment results
+    useful_for:
+      - Ad-hoc SQL analysis
+      - Result tables
+      - Schema inspection
+      - Local reproducible datasets
+    limitations:
+      - The reference server exposes write/DDL tools; mount a copy if the data is precious
+    links:
+      github: https://github.com/modelcontextprotocol/servers
+    tags: [sql, database, reference]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: postgres
+    name: PostgreSQL MCP
+    emoji: "🐘"
+    category: infrastructure
+    tagline: Query and inspect PostgreSQL schemas
+    type: official
+    difficulty: medium
+    setup: medium
+    run: local
+    level: worth-trying
+    permissions: [read, write]
+    best_for: Reading the lab's shared results database
+    useful_for:
+      - Schema inspection
+      - Read-only analytics queries
+      - Result aggregation
+    limitations:
+      - Executes arbitrary SQL — connect with a read-only role unless writes are required
+    links:
+      github: https://github.com/modelcontextprotocol/servers
+    tags: [sql, database, reference]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: docker-mcp-gateway
+    name: Docker MCP Gateway
+    emoji: "🐳"
+    category: infrastructure
+    tagline: Run and manage containerised MCP servers from the Docker catalog
+    type: official
+    difficulty: medium
+    setup: medium
+    run: docker
+    level: worth-trying
+    permissions: [read, write, exec]
+    best_for: Reproducible, sandboxed MCP setups
+    useful_for:
+      - Running MCP servers in containers
+      - Credential management via the Docker MCP Toolkit
+      - Catalog discovery
+      - Per-client enable/disable
+    limitations:
+      - Requires Docker Desktop / MCP Toolkit
+      - Containers may still mount host paths — check each one before enabling
+    links:
+      github: https://github.com/docker/mcp-gateway
+      docs: https://docs.docker.com/ai/mcp-catalog-and-toolkit/
+    tags: [docker, devops, sandboxing]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: playwright
+    name: Playwright MCP
+    emoji: "🎭"
+    category: infrastructure
+    tagline: Browser automation driven by the agent
+    type: official
+    difficulty: medium
+    setup: easy
+    run: local
+    level: worth-trying
+    permissions: [read, write, exec]
+    best_for: Pages that have no API (dashboards, forms, repositories)
+    useful_for:
+      - Navigating websites
+      - Downloading files
+      - Filling forms
+      - Screenshots
+      - Web scraping behind interactions
+    limitations:
+      - Full browser context — session cookies are in scope; use a dedicated profile
+      - Slower than a direct API; prefer APIs when one exists
+    links:
+      github: https://github.com/microsoft/playwright-mcp
+    tags: [browser, automation, scraping]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: context7
+    name: Context7 MCP
+    emoji: "📚"
+    category: infrastructure
+    tagline: Up-to-date, version-specific library documentation
+    type: official
+    difficulty: easy
+    setup: easy
+    run: remote
+    level: recommended
+    permissions: [read]
+    best_for: Avoiding hallucinated APIs in generated research code
+    useful_for:
+      - Library documentation lookup
+      - Version-specific examples
+      - Framework API reference
+    limitations:
+      - Coverage depends on indexed repositories
+      - Does not replace reading the source for research-critical behaviour
+    links:
+      github: https://github.com/upstash/context7
+      docs: https://context7.com
+    tags: [docs, code, reference]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
+
+  - id: chroma
+    name: Chroma MCP
+    emoji: "🌈"
+    category: infrastructure
+    tagline: Vector store for retrieval and RAG experiments
+    type: official
+    difficulty: medium
+    setup: medium
+    run: local
+    level: worth-trying
+    permissions: [read, write]
+    best_for: Building and inspecting retrieval pipelines
+    useful_for:
+      - Collection management
+      - Embedding ingestion
+      - Similarity search
+      - Metadata filtering
+    limitations:
+      - Needs an embedding model configured; results depend on that choice
+      - Not a benchmark harness — evaluate retrieval quality yourself
+    links:
+      github: https://github.com/chroma-core/chroma-mcp
+    tags: [vector-db, rag, retrieval]
+    added: 2026-09-29
+    last_reviewed: 2026-09-29
