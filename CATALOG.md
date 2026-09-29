@@ -14,7 +14,7 @@
 * [2. Master index (all 27 servers)](#2-master-index-all-27-servers)
 * [3. Quick picker: "I want to..."](#3-quick-picker-i-want-to)
 * [4. By category](#4-by-category)
-  * [4.1 Literature & Research](#41--literature--research) — 7 servers
+  * [4.1 Literature & Research](#41--literature--research) — 6 servers + 1 cross-listed
   * [4.2 Models & Datasets](#42--models--datasets) — 2 servers
   * [4.3 Experiment Management](#43--experiment-management) — 2 servers
   * [4.4 Evaluation & Observability](#44--evaluation--observability) — 3 servers
@@ -39,7 +39,7 @@ Each row is one MCP server. Columns are deliberately short so the table stays re
 | **Setup**    | 🟢 Easy / 🟡 Medium / 🔴 Advanced                                   |
 | **Run**      | Remote (hosted URL) / Local (`npx`/`uvx`/`pip`) / Docker           |
 | **Risk**     | Main permission concern — see [SECURITY.md](./SECURITY.md)         |
-| **Links**    | Official docs / repository                                         |
+| **Links**    | Official docs / repository *(shown in the category tables, §4)*    |
 
 ---
 
@@ -206,6 +206,8 @@ Detail page: [`servers/infrastructure.md`](./servers/infrastructure.md)
 | 🧪 **Experimental**  | Interesting but still immature                              |
 | 🛠️ **Advanced**      | Requires infrastructure or non-trivial configuration        |
 | ⚠️ **Use with Care** | Sensitive permissions or potentially destructive operations |
+
+> ⚠️ Emoji collision: 🧪 is also the icon of the **Experiments** category. As a *level*, 🧪 Experimental means "still immature" — no server in this catalog currently carries that level.
 
 Ranking is **not** based on GitHub stars. Every entry is scored on five dimensions:
 

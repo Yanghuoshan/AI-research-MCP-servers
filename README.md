@@ -55,10 +55,10 @@ Most MCP clients read a JSON config. Remote servers use `url`, local servers use
 ```json
 {
   "mcpServers": {
-    "huggingface": {
-      "url": "https://huggingface.co/mcp?login"
+    "<remote-server-name>": {
+      "url": "<remote-url>"
     },
-    "my-local-mcp": {
+    "<local-server-name>": {
       "command": "uvx",
       "args": ["<mcp-package-name>"]
     }
@@ -227,6 +227,8 @@ Full picker table: [CATALOG.md → Quick Picker](./CATALOG.md#quick-picker).
 | 🧪 **Experimental**  | Interesting but still immature                              |
 | 🛠️ **Advanced**      | Requires infrastructure or non-trivial configuration        |
 | ⚠️ **Use with Care** | Sensitive permissions or potentially destructive operations |
+
+> ⚠️ Emoji collision: 🧪 is also the icon of the **Experiments** category. As a *level*, 🧪 Experimental means "still immature" — no server in this catalog currently carries that level.
 
 A project does **not** get a higher rank just because it has more GitHub stars.
 

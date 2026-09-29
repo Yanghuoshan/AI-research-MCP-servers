@@ -94,5 +94,5 @@ The right choice when your stack is self-hosted or when you need GenAI traces al
 | --------------------------------- | -------------------------------------------------------------- |
 | Analyze last night's sweeps       | W&B + [Jupyter](./infrastructure.md#-jupyter-mcp)               |
 | Self-hosted / on-prem tracking    | MLflow                                                          |
-| LLM app tracing + experiments     | MLflow or [LangSmith](../servers/evaluation.md#-langsmith-mcp)  |
+| LLM app tracing + experiments     | MLflow or [LangSmith](./evaluation.md#-langsmith-mcp)  |
 | From experiment to deployment     | W&B/MLflow + [HF Inference Endpoints](./deployment.md#-hf-inference-endpoints-mcp) |

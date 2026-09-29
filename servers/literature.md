@@ -13,7 +13,7 @@ MCP servers for **finding, reading and connecting research papers**.
 | [📄 arXiv MCP](#-arxiv-mcp)                     | Search and retrieve arXiv papers         | Community | 🏆 Recommended  | 🟢 Easy | Local |
 | [🔎 Semantic Scholar MCP](#-semantic-scholar-mcp) | Paper search + citation graph          | Community | 🏆 Recommended  | 🟢 Easy | Local |
 | [🌐 OpenAlex MCP](#-openalex-mcp)               | Global research-landscape analysis       | Community | ⭐ Worth Trying | 🟢 Easy | Local |
-| [🤗 Hugging Face MCP](../servers/models-datasets.md#-hugging-face-mcp) *(cross-listed)* | Papers & daily AI papers on the Hub | Official  | 🏆 Recommended  | 🟢 Easy | Remote |
+| [🤗 Hugging Face MCP](./models-datasets.md#-hugging-face-mcp) *(cross-listed)* | Papers & daily AI papers on the Hub | Official  | 🏆 Recommended  | 🟢 Easy | Remote |
 | [🔍 Exa MCP](#-exa-mcp)                         | Semantic web + research-paper search   | Official  | 🏆 Recommended  | 🟢 Easy | Remote |
 | [🔥 Firecrawl MCP](#-firecrawl-mcp)             | Search, scrape and crawl the web       | Official  | 🏆 Recommended  | 🟢 Easy | Remote |
 | [🧬 PubMed MCP](#-pubmed-mcp)                   | Biomedical literature search           | Community | ⭐ Worth Trying | 🟢 Easy | Local  |
@@ -132,7 +132,7 @@ The Hugging Face MCP also exposes **papers and daily trending papers** on the Hu
 * **Category:** models-datasets (primary)
 * **Level:** 🏆 Recommended
 
-→ Full entry: [Hugging Face MCP](../servers/models-datasets.md#-hugging-face-mcp)
+→ Full entry: [Hugging Face MCP](./models-datasets.md#-hugging-face-mcp)
 
 ---
 

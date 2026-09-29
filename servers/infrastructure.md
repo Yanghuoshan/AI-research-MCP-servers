@@ -380,7 +380,7 @@ Some research material is only reachable by clicking: supplementary material beh
 **Known limitations**
 
 * ⚠️ Full browser context — any logged-in session is in scope. Use a dedicated browser profile with no saved credentials.
-* Slower and more brittle than an API; prefer [Firecrawl](../servers/literature.md#-firecrawl-mcp) for plain content extraction.
+* Slower and more brittle than an API; prefer [Firecrawl](./literature.md#-firecrawl-mcp) for plain content extraction.
 
 🔗 [GitHub](https://github.com/microsoft/playwright-mcp)
 

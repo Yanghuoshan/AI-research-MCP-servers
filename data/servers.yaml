@@ -197,7 +197,7 @@ servers:
     type: official
     difficulty: easy
     setup: easy
-    run: local
+    run: [local, remote]
     level: recommended
     permissions: [read, write]
     best_for: Deep learning experiments
@@ -280,7 +280,7 @@ servers:
     type: official
     difficulty: easy
     setup: easy
-    run: local
+    run: [local, remote]
     level: worth-trying
     permissions: [read, write]
     best_for: LLM observability and evaluation
@@ -333,7 +333,7 @@ servers:
     type: community
     difficulty: medium
     setup: medium
-    run: local
+    run: [local, docker]
     level: recommended
     permissions: [read, write, exec]
     best_for: Scientific computing
@@ -384,7 +384,7 @@ servers:
     type: official
     difficulty: medium
     setup: medium
-    run: remote
+    run: [remote, docker]
     level: recommended
     permissions: [read, write]
     best_for: Code, issues and pull requests

@@ -55,12 +55,12 @@
 ```json
 {
   "mcpServers": {
-    "huggingface": {
-      "url": "https://huggingface.co/mcp?login"
+    "<远程服务名>": {
+      "url": "<远程服务 URL>"
     },
-    "my-local-mcp": {
+    "<本地服务名>": {
       "command": "uvx",
-      "args": ["<mcp-package-name>"]
+      "args": ["<mcp-包名>"]
     }
   }
 }
@@ -226,6 +226,8 @@ ai-research-mcp/
 | 🧪 **Experimental**     | 有意思，但还不够成熟                     |
 | 🛠️ **Advanced**         | 需要基础设施或较复杂的配置               |
 | ⚠️ **Use with Care**    | 权限敏感，或包含可能造成破坏的操作       |
+
+> ⚠️ 图标歧义提示：🧪 同时是 **实验管理** 分类的图标。作为*等级*时，🧪 Experimental 表示"还不够成熟" —— 目前清单里没有任何 server 处于该等级。
 
 项目**不会**因为 GitHub star 多就获得更高等级。
 

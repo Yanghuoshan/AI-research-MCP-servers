@@ -63,7 +63,7 @@ Categories:
 
 | File                          | Scope                                                    |
 | ----------------------------- | -------------------------------------------------------- |
-| `servers/literature.md`       | Papers, citations, research discovery                     |
+| `servers/literature.md`       | Papers, citations, web search/scraping, research discovery |
 | `servers/models-datasets.md`  | Model hubs, dataset hubs, hosted model execution          |
 | `servers/experiments.md`      | Experiment tracking, run management, model registry       |
 | `servers/evaluation.md`       | LLM/agent evaluation, traces, observability, benchmarks   |
@@ -79,7 +79,7 @@ Categories:
 3. **Add the record** to `data/servers.yaml` (see [§6](#6-yaml-schema)).
 4. **Add the detailed entry** to the matching `servers/*.md`, following [§5](#5-entry-format).
 5. **Add the index rows** in `servers/*.md`, in `CATALOG.md` master index + category table, and (if it is a standout) the featured table in `README.md` / `README.zh-CN.md`.
-6. **Run the sync check**: every `id` in `servers.yaml` must appear exactly once in `CATALOG.md`.
+6. **Run the sync check**: every `id` in `servers.yaml` must appear exactly once in the **master index** of `CATALOG.md`. A cross-listed server may appear a second time in its extra category table, but never twice in the master index.
 7. **Open a PR** with:
    * what the server does, in one sentence;
    * how you verified it (client used, version, date);
@@ -101,7 +101,7 @@ Copy this block into the right `servers/*.md` file:
 - **Type:** Official | Community
 - **Difficulty:** 🟢 Easy | 🟡 Medium | 🔴 Advanced
 - **Setup:** 🟢 Easy | 🟡 Medium | 🔴 Advanced
-- **Run:** Remote | Local (`npx` / `uvx` / `pip`) | Docker
+- **Run:** Remote | Local (`npx` / `uvx` / `pip`) | Docker | Local / Remote | Remote / Docker | Local / Docker
 - **Level:** 🏆 Recommended | ⭐ Worth Trying | 🧪 Experimental | 🛠️ Advanced | ⚠️ Use with Care
 - **Permissions:** read-only | write | code execution | cloud billing
 
@@ -137,11 +137,12 @@ Rules for the write-up:
   name: Semantic Scholar MCP
   emoji: "🔎"
   category: literature          # must match a servers/*.md file stem
+  also_in: []                   # optional: extra categories where it is cross-listed
   tagline: Paper search + citation graph
   type: community               # official | community
   difficulty: easy              # easy | medium | advanced
   setup: easy                   # easy | medium | advanced
-  run: local                    # remote | local | docker
+  run: [local, remote]          # remote | local | docker — use a list when several work
   level: recommended            # recommended | worth-trying | experimental | advanced | use-with-care
   permissions: [read]           # read | write | exec | billing
   best_for: Literature discovery
